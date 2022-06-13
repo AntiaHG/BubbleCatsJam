@@ -21,4 +21,7 @@ public class Player : MonoBehaviour
             rb.velocity = Vector2.up * velocity;
         }
     }
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("hit detected");
+    }
 }

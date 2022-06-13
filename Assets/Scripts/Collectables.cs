@@ -22,4 +22,8 @@ public class Collectables : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("you have " + points + " points");
+        Destroy(this.gameObject);
+    }
 }
