@@ -7,7 +7,7 @@ public class Collectables : MonoBehaviour
     public float speed = 4.5f;
     public float points;
     private Rigidbody2D rb;
-    private float limit = -7.32f;
+    private float limit = -8f;
     // Start is called before the first frame update
     void Start()
     {

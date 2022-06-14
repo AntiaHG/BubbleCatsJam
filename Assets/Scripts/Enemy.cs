@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 6f;
     private Rigidbody2D rb;
-    private float limit = -7.32f;
+    private float limit = -8f;
     // Start is called before the first frame update
     void Start()
     {
