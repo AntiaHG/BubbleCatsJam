@@ -23,7 +23,14 @@ public class Collectables : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("you have " + points + " points");
+        
+        if(this.tag == "YellowStar"){
+            Score.scoreValue += 10;
+        }
+        if(this.tag == "PinkStar"){
+            Score.scoreValue += 20;
+        }
+        
         Destroy(this.gameObject);
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6367776051550073648}
   m_Layer: 6
   m_Name: star1
-  m_TagString: Untagged
+  m_TagString: YellowStar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
