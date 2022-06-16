@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Enemy"){
             Debug.Log("enemy hit");
-            //TODO que cuando toque al enemigo se ponga a rotar
             AddTorqueImpulse(90F);
+            Health.instance.HeartSystem();
         }
         
     }
