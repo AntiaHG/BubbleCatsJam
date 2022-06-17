@@ -8,10 +8,12 @@ public class SpawnObjects : MonoBehaviour
     public GameObject collectablePrefab10;
     public GameObject collectablePrefab20;
     private float screenLimit = 4.5f;
+    public AudioSource bkgMusic;
 
     // Start is called before the first frame update
     void Start()
     {
+        bkgMusic = GetComponent<AudioSource>();
         StartCoroutine(EnemyWave());
         StartCoroutine(CollectableWave10());
         StartCoroutine(CollectableWave20());

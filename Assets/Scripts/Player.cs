@@ -5,15 +5,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float velocity = 3f;
+    public float torque;
+    public GameObject yellowCat;
+    public GameObject pinkCat;
     private Rigidbody2D rb;
     Collider2D colliderCat;
-    public float torque;
-
+    Animator animator;
+   
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         colliderCat = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -30,6 +35,15 @@ public class Player : MonoBehaviour
             AddTorqueImpulse(90F);
             Health.instance.HeartSystem();
         }
+        if(other.tag == "YellowStar"){
+            //rb.velocity = Vector3.zero;
+            animator.SetBool("IsYellow", true);
+            Debug.Log("the cat is yellow now");
+        }
+        else if(other.tag == "PinkStar"){
+            animator.SetBool("IsPink", true);
+            Debug.Log("the cat is pink now");
+        }
         
     }
     public void AddTorqueImpulse(float angularChangeInDegrees)
@@ -39,5 +53,6 @@ public class Player : MonoBehaviour
 
         body.AddTorque(impulse, ForceMode2D.Impulse);
     }
+    
    
 }
