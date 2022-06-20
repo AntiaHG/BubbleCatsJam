@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
     void Update()
     {
         if(gameOver == true){
+            Score.instance.Reset();
             return;
         }
     }

@@ -12,4 +12,5 @@ public class GameOver : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+    
 }

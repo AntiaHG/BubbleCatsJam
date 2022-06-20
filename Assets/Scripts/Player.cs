@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    public float velocity = 3f;
+{   float maxDesplazamiento = 4f;
+    public float velocity = 10f;
     public float torque;
-    public GameObject yellowCat;
-    public GameObject pinkCat;
     private Rigidbody2D rb;
     Collider2D colliderCat;
     Animator animator;
@@ -24,24 +22,40 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            //Jump
-            rb.velocity = Vector2.up * velocity;
+        if(Input.GetKey(KeyCode.W) && transform.position.y <= maxDesplazamiento) {
+            Vector3 newPosition = transform.position;
+            newPosition += Vector3.up * velocity * Time.deltaTime;
+            transform.position = newPosition;
         }
+        if(Input.GetKey(KeyCode.S) && transform.position.y >= -maxDesplazamiento) {
+            Vector3 newPosition = transform.position;
+            newPosition += Vector3.down * velocity * Time.deltaTime;
+            transform.position = newPosition;
+        }
+
+        /*if(Input.GetKeyDown(KeyCode.Space)){
+            rb.velocity = Vector2.up * velocity;
+        }*/
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Enemy"){
             Debug.Log("enemy hit");
+            animator.SetBool("IsCyan", true);
+            animator.SetBool("IsYellow", false);
+            animator.SetBool("IsPink", false);
             AddTorqueImpulse(90F);
             Health.instance.HeartSystem();
         }
         if(other.tag == "YellowStar"){
-            //rb.velocity = Vector3.zero;
             animator.SetBool("IsYellow", true);
+            animator.SetBool("IsPink", false);
+            animator.SetBool("IsCyan", false);
             Debug.Log("the cat is yellow now");
         }
         else if(other.tag == "PinkStar"){
             animator.SetBool("IsPink", true);
+            animator.SetBool("IsYellow", false);
+            animator.SetBool("IsCyan", false);
             Debug.Log("the cat is pink now");
         }
         
